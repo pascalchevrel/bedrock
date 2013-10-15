@@ -7,7 +7,12 @@ import jingo
 import jinja2
 from funfactory.settings_base import path as base_path
 from funfactory.urlresolvers import reverse
+from lib.l10n_utils.dotlang import _lazy as _
+from collections import OrderedDict
+from django.utils.safestring import mark_safe
+from jinja2.utils import Markup
 
+LANG_FILES = ['geography']
 
 L10N_IMG_PATH = base_path('media', 'img', 'l10n')
 
@@ -259,3 +264,35 @@ def press_blog_url(ctx):
         locale = 'en-US'
 
     return settings.PRESS_BLOG_ROOT + settings.PRESS_BLOGS[locale]
+
+@jingo.register.function
+@jinja2.contextfunction
+def translated_country_list(ctx):
+    """
+    Output localized country names in <option> tags.
+    """
+    countries = {
+        'FR' : u'France',
+        'US' : u'United States',
+        'BE' : u'Belgium',
+        'CS' : u'Czech Republic',
+    }
+
+    for country in countries:
+        countries[country] = unicode(_(countries[country]))
+
+    return OrderedDict(sorted(countries.items(), key=lambda t: t[1]))
+
+@jingo.register.function
+@jinja2.contextfunction
+def dump_country(ctx, default='US'):
+    countries = translated_country_list(ctx)
+
+    retval = '<select>'
+
+    for var in countries:
+        retval += '<option value="' + var + '">' + countries[var] + '</option>'
+
+    retval += '</select>'
+    #~ print retval
+    return retval
