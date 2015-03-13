@@ -85,6 +85,11 @@ html[lang|="en"] {
     }
 }
 
+.send-another {
+    display: block;
+    margin-top: @baseLine;
+}
+
 .toggle {
     ul {
         list-style-type: none;
@@ -211,7 +216,7 @@ html[lang|="en"] {
 
     .field-email {
         background-image: url(/media/img/firefox/whatsnew-fx37/lock.png);
-        background-position: right center;
+        background-position: right 16px;
         background-repeat: no-repeat;
     }
 
@@ -228,11 +233,6 @@ html[lang|="en"] {
     input[type="email"] {
         width: 89%;
     }
-
-    &.thank p > a {
-        display: block;
-        margin-top: @baseLine;
-    }
 }
 
 #footer-email-errors {
@@ -246,7 +246,7 @@ html[lang|="en"] {
         float: left;
         width: 390px;
         background-image: url(/media/img/firefox/whatsnew-fx37/lock.png);
-        background-position: right center;
+        background-position: right 16px;
         background-repeat: no-repeat;
     }
 
@@ -258,12 +258,16 @@ html[lang|="en"] {
         .open-sans;
         float: right;
     }
+
+    p {
+        margin: @baseLine 0;
+    }
 }
 
 .html-rtl {
     .newsletter-form {
         .field-email {
-            background-position: left center;
+            background-position: left 16px;
         }
         .form-submit {
             float: left;
@@ -272,7 +276,7 @@ html[lang|="en"] {
     #sms-form {
         .input {
             float: right;
-            background-position: left center;
+            background-position: left 16px;
         }
         button[type="submit"] {
             float: left;
@@ -363,7 +367,7 @@ html[lang|="en"] {
         .input {
             float: right;
             margin-bottom: @baseLine;
-            background-position: left center;
+            background-position: left 16px;
             text-align: right;
         }
     }
@@ -390,7 +394,7 @@ html[lang|="en"] {
 
             .input {
                 float: left;
-                background-position: right center;
+                background-position: right 16px;
                 text-align: left;
             }
         }
@@ -437,7 +441,7 @@ html[lang|="en"] {
         .input {
             width: 100%;
             text-align: left;
-            background-position: right center;
+            background-position: right 16px;
         }
 
         input[type="tel"] {
@@ -480,7 +484,7 @@ html[lang|="en"] {
 
             .input {
                 float: none;
-                background-position: left center;
+                background-position: left 16px;
                 text-align: right;
             }
 

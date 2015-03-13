@@ -24,7 +24,7 @@
 {% endblock %}
 
 {% macro thank_you_message() %}
-  {{_('Check your device to start downloading.') }} <a href="#send-another" class="more">{{ _('Send to another device') }}</a>
+  {{_('Check your device to start downloading.') }} <a href="#send-another" class="send-another more">{{ _('Send to another device') }}</a>
 {%- endmacro %}
 
 {% block content %}
@@ -46,7 +46,7 @@
   </nav>
   <div class="tab-panel">
     <section id="send-email" class="tab-content">
-      {% set newsletter_title = _('Send yourself a link by email') %}
+      {% set newsletter_title = _('Send Firefox to your Android phone or tablet') %}
       {% set newsletter_submit = _('Send') %}
       {% set newsletter_thankyou_head = _('Your link has been sent!') %}
       {% set newsletter_thankyou_content = thank_you_message() %}
@@ -56,11 +56,12 @@
         {% trans url=settings.GOOGLE_PLAY_FIREFOX_LINK %}
           Also available from <a href="{{ url }}">Google Play</a>.
         {% endtrans %}
+        <br>{{ _('The intended recipient of the email must have consented.') }} <a href="#">{{ _('Learn more') }}</a>
       </footer>
     </section>
     <section id="send-sms" class="tab-content">
       <div class="inner-wrapper">
-        <h3>{{ _('Send yourself a link by text message') }}</h3>
+        <h3>{{ _('Send Firefox to your Android phone') }}</h3>
         <form id="sms-form" method="post" action="{{ secure_url('firefox.sms') }}">
           <div class="input">
             <label for="number">{{ _('Enter your 10-digit phone number') }}</label>
@@ -71,7 +72,7 @@
                    placeholder="{{ _('Enter your 10-digit phone number') }}"
                    value=""
                    required>
-            <div class="error hidden"></div>
+            <p class="error hidden">{{ _('An error occurred in our system. Please try again later.') }}</p>
           </div>
           <button type="submit">{{ _('Send') }}</button>
         </form>
@@ -84,9 +85,7 @@
             Also available from <a href="{{ url }}">Google Play</a>.
           {% endtrans %}
           <br>
-          {{ _('SMS & data rates may apply. The intended recipient of the SMS must have consented.') }}
-          <br>
-          <a href="#">{{ _('Learn more') }}</a>
+          {{ _('SMS service available in the U.S. only.') }} {{ _('SMS & data rates may apply. The intended recipient of the SMS must have consented.') }} <a href="#">{{ _('Learn more') }}</a>
         </footer>
       </div>
     </section>

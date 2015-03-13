@@ -3,6 +3,9 @@
 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 ;(function($) {
+
+    'use strict';
+
     var $main = $('main');
     var $container = $('.tab-panel');
 
@@ -29,14 +32,21 @@
             .done(function (data) {
                 // TODO make this fancier like email one
                 if (data.success) {
-                    $form.hide();
-                    $('.sms-form-thank-you').show();
+                    $('#send-sms > .inner-wrapper > h3').addClass('hidden');
+                    $form.addClass('hidden');
+                    $('.sms-form-thank-you').removeClass('hidden');
+                } else if (data.error) {
+                    $form.find('.error').html(data.error).removeClass('hidden');
                 }
-                else {
-                    $form.find('.error').html(data.error).show();
-            }})
+            })
             .fail(function () {
-                $form.find('.error').html('We have had a problem. Please try again later.').show();
+                $form.find('.error').removeClass('hidden');
             });
     });
+
+    $('.send-another').on('click', function (e) {
+        e.preventDefault();
+    });
+
+
 })(window.jQuery);
