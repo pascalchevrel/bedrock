@@ -60,6 +60,7 @@ urlpatterns = (
     page('firefox/organizations/faq', 'firefox/organizations/faq.html'),
     page('firefox/organizations', 'firefox/organizations/organizations.html'),
     page('firefox/nightly/firstrun', 'firefox/nightly_firstrun.html'),
+    page('firefox/nightly/whatsnew', 'firefox/nightly_whatsnew.html'),
     url(r'^firefox/installer-help/$', views.installer_help,
         name='firefox.installer-help'),
 
