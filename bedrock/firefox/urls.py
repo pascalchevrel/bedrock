@@ -17,7 +17,7 @@ firstrun_re = latest_re % (version_re, 'firstrun')
 whatsnew_re = latest_re % (version_re, 'whatsnew')
 tracking_protection_re = latest_re % (version_re, 'tracking-protection/start')
 platform_re = '(?P<platform>android|ios)'
-channel_re = '(?P<channel>beta|aurora|developer|nightly|organizations)'
+channel_re = '(?P<channel>beta|aurora|nightly|developer|organizations)'
 releasenotes_re = latest_re % (version_re, r'(aurora|release)notes')
 android_releasenotes_re = releasenotes_re.replace('firefox', 'firefox/android')
 ios_releasenotes_re = releasenotes_re.replace('firefox', 'firefox/ios')
@@ -40,6 +40,7 @@ urlpatterns = (
     page('firefox/desktop/tips', 'firefox/desktop/tips.html'),
     page('firefox/desktop/trust', 'firefox/desktop/trust.html'),
     page('firefox/developer', 'firefox/developer.html'),
+    page('firefox/nightly', 'firefox/nightly.html'),
     page('firefox/features', 'firefox/features.html'),
     page('firefox/geolocation', 'firefox/geolocation.html'),
     page('firefox/interest-dashboard', 'firefox/interest-dashboard.html'),

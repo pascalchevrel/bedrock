@@ -145,7 +145,7 @@ def download_firefox(ctx, channel='release', platform='all',
         builds = desktop_builds(channel, builds, locale, force_direct,
                                 force_full_installer, force_funnelcake,
                                 funnelcake_id)
-
+    print version
     if show_android:
         version = firefox_android.latest_version(channel)
         builds = android_builds(channel, builds)
@@ -247,6 +247,8 @@ def firefox_url(platform, page, channel=None):
             channel = 'aurora'
     if channel == 'esr':
         channel = 'organizations'
+    if channel == 'nightly':
+        channel = 'nightly'
 
     if channel:
         kwargs['channel'] = channel

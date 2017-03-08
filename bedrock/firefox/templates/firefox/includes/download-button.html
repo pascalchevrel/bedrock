@@ -87,6 +87,8 @@
                   {{ _('Firefox Beta') }}
                 {% elif channel == 'alpha' %}
                   {{ _('<span>Firefox</span> Developer Edition') }}
+                {% elif channel == 'nightly' %}
+                  {{ _('Download <span>Firefox</span> Nightly') }}
                 {% else %}
                   {{ _('Download Firefox') }}
                 {% endif %}
